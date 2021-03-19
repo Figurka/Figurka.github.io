@@ -110,7 +110,7 @@ article {
 
 .catalog {
     width: 50%;
-    background-image: url('images/Rectangle.png');
+    background-image: url('Rectangle.png');
     background-size: cover;
     display: flex;
     flex-direction: column;

@@ -2,57 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сайт разработчика</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css&quot; rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Document</title>
 </head>
 <body>
-    <header>
-        <div class="logo">WD</div>
-        <nav>
-            <ul>
-                <li><a href="#"><span class="blue">ГЛАВНАЯ</span></a></li>
-                <li><a href="#">ОБ АВТОРЕ</a></li>
-                <li><a href="#">РАБОТЫ</a></li>
-                <li><a href="#">ПРОЦЕСС</a></li>
-                <li><a href="#">КОНТАКТЫ</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <div class="watch">
-            <h1 class="watchH1">СЕЗОН 2020/21</h1>
-            <div class="line"></div>
-            <div class="product">
-                <div class="watch1">
-                    <div class="photo">
-                        <img src="часы.png">
-                    </div>
-                    <p>Louis XVI ATHOS</p>
-                    <p>165 000 руб.</p>
-                </div>                    
-                <div class="watch1">
-                    <div class="photo">
-                        <img src="часы.png">
-                    </div>
-                    <p>Louis XVI ATHOS</p>
-                    <p>165 000 руб.</p>
+    <div id="app" class="container">
+        <div class="row row-cols-1 row-cols-md-2 g-4 align-items-baseline">
+            <div class="card mx-3" style="width: 18rem;" v-for="(img, index) in photos">           
+                <img :src="img" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Фото лисы № {{ index+1 }}</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-                <div class="watch1">
-                    <div class="photo">
-                        <img src="часы.png">
-                    </div>
-                    <p>Louis XVI ATHOS</p>
-                    <p>165 000 руб.</p>
-                </div>
-            </div>       
+            </div>      
         </div>
-        <div class="catalog">
-            <h1 class="watchH1">Новая коллекция</h1>
-            <div class="line"></div>
-            <div class="button"><a class="buttonA" href="#">Каталог</a></div>
-        </div>
-    </main>
+        <button @click="getPhotos">Хочу ещё</button>  
+    </div>
+    
+    <script src="https://unpkg.com/vue@next"></script&gt;
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    photos: []
+                }
+            },
+            async created() {
+                await this.getPhotos();
+            },
+            methods: {
+                async getPhotos() {
+                    for (let i=0; i<10;i++) {
+                    let response = await fetch('https://randomfox.ca/floof/&#39;);
+                    let data = await response.json();
+                    this.photos.push(data['image']);
+                    }
+                }
+            }
+        }).mount('#app');
+    </script>
 </body>
 </html>
